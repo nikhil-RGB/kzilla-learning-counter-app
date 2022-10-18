@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -70,11 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
+      appBar: buildBar(),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -96,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Button Press number:',
             ),
             Text(
               '$_counter',
@@ -112,5 +109,43 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add_circle_outline),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  //This function is used to build the app bar to be used in the application's homescreen.
+  AppBar buildBar() {
+    return AppBar(
+        elevation: 0,
+        backgroundColor: Colors.black,
+        title: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.exit_to_app_rounded,
+                color: Colors.blue,
+                size: 30,
+              ),
+              onPressed: () => {SystemNavigator.pop()},
+            ),
+            Container(
+                height: 40,
+                width: 40,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Tooltip(
+                      textStyle: TextStyle(
+                        fontSize: 13,
+                      ),
+                      preferBelow: true,
+                      message: "Account",
+                      child: IconButton(
+
+                          //tooltip: 'Light/Dark mode',
+                          icon: Icon(Icons.account_circle_rounded),
+                          color: Colors.blue.shade400,
+                          onPressed: () => {}),
+                    )))
+          ],
+        ));
   }
 }
