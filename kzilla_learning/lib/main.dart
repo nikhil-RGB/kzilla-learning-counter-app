@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -106,9 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromARGB(200, 270, 200, 150),
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.exit_to_app_rounded),
+        child: const Icon(Icons.add_circle_outline),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
